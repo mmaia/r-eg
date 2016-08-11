@@ -1,0 +1,29 @@
+<!-- add this when navbar should be present-->
+<header data-ng-include="'/modules/core/views/header.client.view.html'"
+        class="navbar navbar-fixed-top navbar-inverse"></header>
+
+<section data-ng-controller="EventsController as eventsCtrl" data-ng-init="find()">
+    <div class="page-header" align="center">
+        <h1>Events</h1>
+    </div>
+
+    <div class="list-group">
+        <a data-ng-repeat="event in eventsCtrl.events" data-ui-sref="events.view({eventId: event._id})" class="list-group-item">
+            <div class="pull-left">
+                <img data-ng-src="{{event.logoImageURL === '' ? '/modules/core/img/sunEventPlaceholderImage.png' : event.logoImageURL}}"
+                     width="50px" height="50px" class="img-circle"
+                     alt="Event Logo" tooltip="Event Logo">
+            </div>
+            <small class="list-group-item-text">
+                Event Created on
+                <span data-ng-bind="event.created | date:'mediumDate'"></span>
+                by
+                <span data-ng-bind="event.user.displayName"></span>
+            </small>
+            <h4 class="list-group-item-heading" data-ng-bind="event.title"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-if="eventsCtrl.events.$resolved && !eventsCtrl.events.length">
+        No events yet, why don't you <a data-ui-sref="events.new">create one</a>?
+    </div>
+</section>

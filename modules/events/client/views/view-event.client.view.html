@@ -1,0 +1,181 @@
+<!-- add this when navbar should be present-->
+<header data-ng-include="'/modules/core/views/header.client.view.html'"
+        class="navbar navbar-fixed-top navbar-inverse"></header>
+<div id="manage" ng-controller="EventsController as eventsCtrl" data-ng-init="findOne()">
+    <section>
+        <div class="page-header" align="center">
+            <div class="row">
+                <h2>{{event.title}}</h2>
+            </div>
+        </div>
+
+        <small>
+            <em class="text-muted">
+                Event Created on
+                <span data-ng-bind="event.created | date:'mediumDate'"></span>
+                by
+                <span data-ng-bind="event.user.displayName"></span>
+            </em>
+        </small>
+    </section>
+
+
+    <section id="workspace-title" class="white-background" ng-hide="eventsCtrl.preview">
+    </section>
+    <div id="page">
+        <div>
+            <!--image-->
+            <div id="eventImage" class="row">
+                <div class="col-ms-10">
+                    <a><img data-ng-src='{{eventMainImageURL}}' width="100%" height="200px"
+                                    alt="Main Event Image Here"></a>
+                    <span data-ng-show="authentication.user._id == event.user._id && !eventsCtrl.preview && !uploaderMain.queue.length"><input
+                            type="file" nv-file-select uploader="uploaderMain"></span>
+
+                    <div class="text-center form-group" data-ng-show="uploaderMain.queue.length">
+                        <button class="btn btn-primary" data-ng-click="uploadEventMainPicture();">Upload</button>
+                        <button class="btn btn-default" data-ng-click="cancelUploadMain();">Cancel</button>
+                    </div>
+                </div>
+                <div class="col-ms-2">
+                    <input id="preview" type="checkbox" data-ng-model="eventsCtrl.preview"
+                           data-ng-show="authentication.user._id == event.user._id"><span
+                        data-ng-show="authentication.user._id == event.user._id">Preview</span></input>
+                    <div class="pull-right"
+                         data-ng-show="authentication.user._id == event.user._id && !eventsCtrl.preview">
+                        <a class="btn btn-primary" data-ui-sref="events.edit({eventId: event._id})">
+                            <i class="glyphicon glyphicon-edit"
+                               tooltip="Edit Main Event Sections: Title, Main event description and date"></i>
+                        </a>
+
+                        <a class="btn btn-primary" data-ng-click="remove();">
+                            <i class="glyphicon glyphicon-trash" tooltip="Delete Event"></i>
+                        </a>
+                    </div>
+                    <div>
+                        <img src="/modules/events/img/inviteFacebookFriends.jpg"/>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <!-- description -->
+            <div id="eventDescription" class="row">
+                <div class="col-md-8">
+                    <div id="main-event-text"><h4 data-ng-bind-html="event.description" /></div>
+                    <br>
+                    <hr>
+                    <div class="pull-right"
+                         data-ng-show="authentication.user._id == event.user._id && !eventsCtrl.preview">
+                        <a class="btn btn-primary" data-ui-sref="events.newDescription({eventId: event._id})">
+                            <i class="glyphicon glyphicon-plus" tooltip="Add Event Description"></i>
+                        </a>
+                    </div>
+
+
+                    <!-- Description Details -->
+                    <div data-ng-repeat="descriptionDetails in event.descriptionDetails">
+                        <h2>{{descriptionDetails.title}}</h2>
+                        <h4 data-ng-bind-html="descriptionDetails.description" />
+                        <hr>
+                    </div>
+                </div>
+                <!-- details -->
+                <div id="eventDetails" class="col-md-3">
+
+                    <!-- Start and End dates-->
+                    <div>
+                        <div>Start Date: {{event.start | date}}</div>
+                        <div>End Date: {{event.end | date}}</div>
+                    </div>
+
+                    <hr>
+                    <!-- Event Agenda -->
+                    <div>
+                        <div class="pull-right"
+                             data-ng-show="authentication.user._id == event.user._id && !eventsCtrl.preview">
+                            <a class="btn btn-primary" data-ui-sref="events.newAgenda({eventId: event._id})">
+                                <i class="glyphicon glyphicon-plus" tooltip="Add / Edit Event Agenda"></i>
+                            </a>
+                        </div>
+                        <div>Agenda:</div>
+                    </div>
+
+                    <hr>
+                    <!-- Ticket info and reservation-->
+                    <div>
+                        <div class="pull-right"
+                             data-ng-show="authentication.user._id == event.user._id && !eventsCtrl.preview">
+                            <a class="btn btn-primary" data-ui-sref="events.newTicket({eventId: event._id})">
+                                <i class="glyphicon glyphicon-plus"
+                                   tooltip="Add / Edit ticket and reservation info"></i>
+                            </a>
+                        </div>
+                        <div>Tickets:</div>
+                        <div data-ng-repeat="ticket in event.tickets">
+                            <a href="{{ticket.url}}" target="_blank">{{ticket.label}}</a>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <!-- Venue -->
+                    <div>
+                        <div class="pull-right"
+                             data-ng-show="authentication.user._id == event.user._id && !eventsCtrl.preview">
+                            <a class="btn btn-primary" data-ui-sref="events.newVenue({eventId: event._id})">
+                                <i class="glyphicon glyphicon-plus" tooltip="Add / Edit Venue"></i>
+                            </a>
+                        </div>
+                        <div>Venue: {{event.venue}}</div>
+                    </div>
+                    <hr>
+                    <!-- Map -->
+                    <div>
+                        <div class="pull-right"
+                             data-ng-show="authentication.user._id == event.user._id && !eventsCtrl.preview">
+                            <a class="btn btn-primary" data-ui-sref="events.newMap({eventId: event._id})">
+                                <i class="glyphicon glyphicon-plus" tooltip="Add / Edit map location"></i>
+                            </a>
+                        </div>
+                        <div>Map:</div>
+                        <br>
+
+                        <div tooltip="Double click to open new tab in Google Maps">
+                            <map center="{{event.map.lat}}, {{event.map.long}}" zoom="14" draggable="false"
+                                 scrollwheel="false" ng-dblclick="openGMaps()">
+                                <marker position="{{event.map.lat}}, {{event.map.long}}" draggable="false"></marker>
+                            </map>
+                        </div>
+                    </div>
+                    <hr>
+                    <!-- Event Logo -->
+                    <div>
+                        <div class="pull-right"
+                             data-ng-show="authentication.user._id == event.user._id && !eventsCtrl.preview">
+                            <a class="btn btn-primary" data-ui-sref="events.newLogo({eventId: event._id})">
+                                <i class="glyphicon glyphicon-plus" tooltip="Add / Edit event logo"></i>
+                            </a>
+                        </div>
+                        <div>Event Logo:</div>
+                        <div>
+                            <img data-ng-src='{{logoImageURL}}'
+                                 width="50px" height="50px" class="img-circle"
+                                 alt="Event Logo" tooltip="Event Logo">
+                        </div>
+                         <span data-ng-show="authentication.user._id == event.user._id && !eventsCtrl.preview && !uploaderLogo.queue.length"><input
+                                 type="file" nv-file-select uploader="uploaderLogo"></span>
+
+                        <div class="text-center form-group" data-ng-show="uploaderLogo.queue.length">
+                            <button class="btn btn-primary" data-ng-click="uploadEventLogoPicture();">Upload</button>
+                            <button class="btn btn-default" data-ng-click="cancelUploadLogo();">Cancel</button>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+        <!-- this row holds Description(title and description) and Agenda(dates, speakers, subject) for the event-->
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<!-- add this when navbar should be present-->
+<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
+
+<section data-ng-controller="EventsController as eventsCtrl" data-ng-init="findOne()">
+    <div class="page-header" align="center">
+        <h3>{{event.title}} - New Map</h3>
+    </div>
+    <div class="col-sm-12">
+        <form name="newDescriptionForm" class="form-horizontal" novalidate>
+                <div class="form-group-sm">
+                    Search Type:
+                    <select ng-model="types" class="form-control">
+                        <option value="['geocode']">Geodode</option>
+                        <option value="['establishment']">Establishment</option>
+                        <option value="['address']">Address</option>
+                    </select><br/>
+                </div>
+                <div class="form-group-sm">
+                    <input places-auto-complete ng-model="address" types="{{types}}" on-place-changed="placeChanged(place)" type="text" class="form-control" required>
+                </div>
+                <hr>
+                <div>
+                    <map center="current-location" zoom="15" draggable="false">
+                        <marker position="{{place.geometry.location.lat()}}, {{place.geometry.location.lng()}}" on-click="toggleBounce()" animation="DROP" draggable="false"></marker>
+                    </map>
+                </div>
+                <br>
+                <div class="form-group-sm">
+                    <button type="button" class="btn btn-primary" data-ng-click="addMap()">Update</button>
+                    <button type="button" class="btn btn-default" data-ui-sref="events.view({eventId: event._id})">Cancel</button>
+                </div>
+                <div data-ng-show="error" class="text-danger">
+                    <strong data-ng-bind="error"></strong>
+                </div>
+        </form>
+    </div>
+</section>

@@ -1,0 +1,108 @@
+<!--Custom css that only needs to be applyed to this page-->
+<style type="text/css">
+/** override core value so the initial page starts from top **/
+.content {
+margin-top: 0px;
+}
+
+/** override core values so initial page image fits the full page and info below also fills in the full page**/
+.container {
+padding-right: 0px;
+padding-left: 0px;
+margin-right: 0px;
+margin-left: 0px;
+width: 100%;
+}
+</style>
+<!-- The login view -->
+<section id="main-page" class="container-fluid" style="padding-left: 0px !important;" data-ng-controller="HomeController as homeCtrl">
+    <div class="container">
+    <section id="row1" class="dark-base full-screen">
+        <div class="navbar-inner">
+            <nav class="navbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="" ng-click="homeCtrl.goToFeatures()"><span class="font-welcome-page">How it works</span></a></li>
+                    <li><a href="" ng-click="homeCtrl.goToPricing()"><span class="font-welcome-page">Pricing</span></a></li>
+                </ul>
+            </nav>
+        </div>
+        <br/>
+        <div align="center">
+            <img src="modules/core/img/logo(447x176).png" class="img-responsive"/>
+        </div>
+        <h1 id="welcome-message">Next time you have an event,
+            <br/> registration will be one less thing to worry about</h1>
+        <a href="" class="button font-welcome-page">Create an event registration</a><br/>
+        Already a member? <a href="" ng-click="openModal()"><span class="font-welcome-page">Login</span></a>
+        <br/>
+    </section>
+    </div>
+    <div id="wrapper">
+        <div class="container-fluid" id="row2">
+            <section id="features" class="row">
+                <div class="col-md-3 col-xs-12">
+                    <h1 class="dark-base">How it works</h1>
+
+                    <div class="feature-message">
+                        <header>R.eg allows you to manage all aspects of your event from one place.</header>
+                        <a href="" class="link base">Create an event Registration</a>
+                    </div>
+                </div>
+                <div class="feature col-md-3 col-xs-12">
+                    <header>Registration</header>
+                    Create registration pages with agenda and maps
+                    <br/>
+                </div>
+                <div class="feature col-md-3 col-xs-12">
+                    <header>Manage event</header>
+                    Design, send invitations lists and see who is coming
+                </div>
+                <div class="feature col-md-3 col-xs-12">
+                    <header>Social</header>
+                    Use our deck to promote over social networks and monitor mentions during the event
+                </div>
+            </section>
+            <br/>
+        </div>
+        <div id="row3" class="container-fluid light-gray-background">
+            <section id="pricing" class="row">
+                <div class="price-message col-md-3 col-xs-12">
+                    <h1 class="dark-base">Pricing</h1>
+                    <header>Create your registration pages, manage invitations and social content through our easy to
+                        use platform.
+                    </header>
+                    <a href="" class="link base">Create an event Registration</a>
+                </div>
+                <div class="price-tier col-md-3 col-xs-12">
+                    <header>Free</header>
+                    <section>
+                        <ul>
+                            <li> Hosts your event page for up to<b>10</b> Days</li>
+                            <li> Add <b>10</b> extra days for <b>0.99</b> USD</li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="price-tier col-md-3 col-xs-12">
+                    <header>2.99 USD</header>
+                    <section>
+                        <ul>
+                            <li> Hosts your event page for up to <b>45</b> Days</li>
+                            <li> Manage social interactions</li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="price-tier col-md-3 col-xs-12">
+                    <header>6.99 USD</header>
+                    <section>
+                        <ul>
+                            <li> Hosts your event page for up to <b>45</b> Days</li>
+                            <li> Manage social interactions</li>
+                            <li> Accept payments</li>
+                        </ul>
+                    </section>
+                </div>
+            </section>
+            <br/>
+        </div>
+    </div>
+</section>

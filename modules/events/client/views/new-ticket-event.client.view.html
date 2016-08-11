@@ -1,0 +1,44 @@
+<!-- add this when navbar should be present-->
+<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
+
+<section data-ng-controller="EventsController as eventsCtrl" data-ng-init="findOne()">
+    <div class="page-header" align="center">
+        <h3>{{event.title}} - New Ticket</h3>
+    </div>
+    <div class="col-xs-12">
+        <form name="newDescriptionForm" class="form-horizontal" data-ng-submit="addTicket()" novalidate>
+            <fieldset>
+                <div class="form-group">
+                    <label class="control-label" for="label">URL Label</label>
+                    <div class="controls">
+                        <input name="label" type="text" data-ng-model="event.tickets.label" id="label" class="form-control" placeholder="The Best Tickets" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="url">URL</label>
+                    <div class="controls">
+                        <input name="title" type="text" data-ng-model="event.tickets.url" id="url" class="form-control" placeholder="www.tickets.com" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Add Ticket</button>
+                    <button type="button" class="btn btn-default" data-ui-sref="events.view({eventId: event._id})">Cancel</button>
+                </div>
+                <div data-ng-show="error" class="text-danger">
+                    <strong data-ng-bind="error"></strong>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <hr style="width: 100%;"/>
+    <div>
+        <h4>Ticket List</h4>
+    </div>
+    <div class="col-xs-12">
+        <table>
+
+        </table>
+    </div>
+
+</section>
+

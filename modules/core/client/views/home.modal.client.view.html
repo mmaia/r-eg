@@ -1,0 +1,25 @@
+<!--login-->
+<div class="modal-content" style="padding-top: 25px">
+    <div class="modal-header">
+        <h2 class="text-center">Login</h2>
+    </div>
+    <form class="form col-md-12 center-block" role="form">
+        <div class="modal-body">
+            <a href="">
+                <img ng-click="callOauthProvider('/api/auth/linkedin')" ng-src="modules/core/img/linkedin-signin.png" id="linkedInButton" width="150" height="30"/>
+            </a>
+            <a href="">
+                <img  ng-click="callOauthProvider('/api/auth/twitter')" ng-src="modules/core/img/twitter-signin.png" id="twitterButton" width="150" height="30"/>
+            </a>
+            <a href="">
+                <img  ng-click="callOauthProvider('/api/auth/facebook')" ng-src="modules/core/img/facebook-signin.png" id="facebookButton" width="150" height="30"/>
+            </a>
+        </div>
+    </form>
+    <div class="modal-footer">
+        <div class="col-md-12">
+            <span class="pull-left"><a href="" data-ui-sref="authentication.signup">I am new user - Register</a></span><span
+                class="pull-right"><a href="">Forgot my password</a></span>
+        </div>
+    </div>
+</div>

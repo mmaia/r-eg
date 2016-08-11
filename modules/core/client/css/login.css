@@ -1,0 +1,33 @@
+@CHARSET "UTF-8";
+
+#main-page a {color: #3A0466;}
+#main-page #row1 {
+    background-image: url('../img/banner-background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    line-height: 3em;
+    vertical-align: middle;
+}
+
+#main-page .navbar .nav,
+#main-page .navbar .nav > li {
+    float:none;
+    display:inline-block;
+    *display:inline; /* ie7 fix */
+    *zoom:1; /* hasLayout ie7 trigger */
+    vertical-align: top;
+}
+#wrapper{height:100%;}
+#main-page .navbar-inner { text-align:center; }
+#main-page #row1 br {line-height: 1.4em;}
+#main-page #row1 h1 {margin-top: 30px; margin-bottom: 45px;}
+#main-page .row{margin-top: 30px;}
+#main-page .row h1 {margin-bottom: 25px;}
+#main-page .container-fluid{min-height: 50%;}
+
+.price-tier, .price-message, .feature, .feature-message {vertical-align: top;}
+.price-tier header, .feature header{text-align: center;margin: 30px 0;}
+.price-message header, .feature-message header{margin-bottom: 20px;}
+.price-tier li {list-style: none;padding: 10px;}
+.feature header, .price-tier header {font-size: 1.4em;font-weight: bold;}

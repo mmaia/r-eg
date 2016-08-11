@@ -1,0 +1,70 @@
+<!-- add this when navbar should be present-->
+<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
+
+<section data-ng-controller="EventsController as eventsCtrl" data-ng-init="findOne()">
+    <div class="page-header" align="center">
+        <h2>Edit Event</h2>
+    </div>
+    <div class="col-md-12">
+        <form name="eventForm" class="form-horizontal" data-ng-submit="update()" novalidate>
+            <fieldset>
+                <div class="form-group">
+                    <label class="control-label" for="title">Title</label>
+                    <div class="controls">
+                        <input name="title" type="text" data-ng-model="event.title" id="title" class="form-control" placeholder="Title">
+                    </div>
+                </div>
+                <div class="row" id="dates">
+                    <div class="col-md-6">
+                        <div class="form-group" id="initialDateGroup">
+                            <label for="initialDate">Event Initial Date</label>
+                            <p class="input-group">
+                                <input type="text" id="initialDate" class="form-control" datepicker-popup="{{format}}" data-ng-model="event.start"
+                                       is-open="openedInitialDate"
+                                       date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"/>
+                              <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="openInitialDate($event)"><i
+                                        class="glyphicon glyphicon-calendar"></i></button>
+                              </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" id="finalDateGroup">
+                            <label for="finalDate">Event Final Date</label>
+                            <p class="input-group">
+                                <input type="text" id="finalDate" class="form-control" datepicker-popup="{{format}}" data-ng-model="event.end"
+                                       is-open="openedFinalDate"
+                                       ng-required="true" close-text="Close"/>
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="openFinalDate($event)"><i
+                                class="glyphicon glyphicon-calendar"></i></button>
+                      </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="description">Content</label>
+                    <div class="controls">
+                        <text-angular
+                                data-ng-model="event.description" id="description"
+                                cols="30" rows="10" placeholder="Description"
+                                ta-toolbar="[['h1', 'h2', 'h3', 'h4', 'h5'], ['bold', 'italics', 'underline', 'strikeThrough'],
+                                ['p', 'pre', 'quote', 'ul', 'ol', 'clear', 'indent', 'outdent'], ['justifyLeft', 'justifyRight', 'justifyFull', 'justifyCenter']]">
+                        </text-angular>
+
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+                </div>
+                <div data-ng-show="error" class="text-danger">
+                    <strong data-ng-bind="error"></strong>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</section>

@@ -1,0 +1,170 @@
+.content {
+  margin-top: 50px;
+}
+
+.undecorated-link:hover {
+  text-decoration: none;
+}
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+  display: none !important;
+}
+.ng-invalid.ng-dirty {
+  border-color: #FA787E;
+}
+.ng-valid.ng-dirty {
+  border-color: #78FA89;
+}
+.header-profile-image {
+  opacity: 0.8;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+.open .header-profile-image,
+a:hover .header-profile-image {
+  opacity: 1;
+}
+.user-header-dropdown-toggle {
+  padding-top: 11px !important;
+  padding-bottom: 11px !important;
+}
+
+
+/** Customize navbar top color overriding default form bootstrap */
+.navbar-inverse {
+  background-image: linear-gradient(to bottom, #fff 0%, #fff 100%);
+  border-color: #F8F9FB;
+}
+
+/** Customize the active menu color of the selected menu, override default from bootstrap **/
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .active > a {
+  background-image: linear-gradient(to bottom, #3A0466 0%, #3A0466 100%);
+  background-repeat: repeat-x;
+  box-shadow: 0px 3px 9px #3A0466 inset;
+}
+
+/** menu font color: #7D7D7D**/
+.navbar-inverse .navbar-nav > li > a {
+  color: #7D7D7D;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+  color: #3A0466;
+  background-color: transparent;
+}
+
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus{
+  background-image: linear-gradient(to bottom, #3A0466   0%, #3A0466 100%)
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  color: #fff;
+  background-color: #3A0466;
+}
+
+a { color: #3A0466}
+
+.logo{
+  width: 80px;
+}
+/*************************************************************************************************************************/
+/*** Theme r.eg ***/
+/*************************************************************************************************************************/
+html, body {color: #3A0466;}
+
+.base {color: #690EB2;}
+.dark-base {color: #3A0466;}
+.dark-base-background {background-color: #3A0466;}
+.light-gray-background {background-color: #DDDDDD;}
+.lighter-gray-background {background-color: #F2F2F2;}
+
+.font-opensans{font-family: 'Open Sans', sans-serif;}
+
+.white-background {background-color: #fff;}
+
+.full-screen {
+  /* Set the height to match that of the viewport. */
+  height: 100vh;
+  /* Set the width to match that of the viewport. */
+  width: 100vw;
+  /* Remove any browser-default margins. */
+  margin: 0;
+}
+
+.button {
+  border: 2px solid #3A0466;
+  border-radius: 25px;
+  text-decoration: none;
+  padding: 15px;
+  color: #3A0466;
+  font-size: 1.2em;
+}
+
+.button-inverse {
+  background-color: #3A0466;
+  padding-right: 45px;
+  padding-left: 45px;
+  color: #fff;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.btn-primary {
+  background: #3A0466;
+  color: #ffffff;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+  background: #3A0466;
+}
+
+.btn-primary:active, .btn-primary.active {
+  background: #3A0466;
+  box-shadow: none;
+}
+
+.button:hover{
+  text-decoration: none;
+  color: #3A0466;
+}
+
+.font-welcome-page {
+  font-family: Menlo, monospace;
+  font-size: 15px;
+}
+
+@media screen and (max-width: 600px) {
+  #welcome-message {
+    visibility: hidden;
+    clear: both;
+    float: left;
+    margin: 10px auto 5px 20px;
+    width: 28%;
+    display: none;
+  }
+
+  #main-page #row1 {
+    background-image: url('../img/banner-background-mobile.jpg') !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    line-height: 3em;
+    vertical-align: middle;
+  }
+
+  .hide-column-mobile {
+    visibility: hidden;
+    clear: both;
+    display: none;
+  }
+}
+/*************************************************************************************************************************/
+/*** End theme r.eg ***/
+/*************************************************************************************************************************/
+
